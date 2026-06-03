@@ -1,5 +1,5 @@
-.app {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 2rem;
+#sign-in {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
 }
