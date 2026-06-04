@@ -3,3 +3,10 @@
   place-content: center;
   min-height: 100vh;
 }
+
+#book-form {
+  background: #eee;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  padding: 1rem;
+}

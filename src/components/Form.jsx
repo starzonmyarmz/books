@@ -116,83 +116,106 @@ export function Form({ showForm }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} class="book-form">
+    <form onSubmit={handleSubmit} id="book-form">
       <h2>Add a Book</h2>
 
-      <label>ISBN</label>
-      <input
-        type="text"
-        value={isbn}
-        onInput={handleISBNInput}
-        onBlur={handleISBNBlur}
-        placeholder="978..."
-      />
-      {loading.value && <p class="hint">Looking up ISBN…</p>}
       {cover.value && <img src={cover.value} alt="" class="cover-preview" />}
 
-      <label>Title</label>
-      <input
-        type="text"
-        value={title}
-        onInput={(e) => (title.value = e.currentTarget.value)}
-        placeholder="Book title"
-      />
+      <div class="fields">
+        <div class="field">
+          <label>ISBN</label>
+          <input
+            type="text"
+            value={isbn}
+            onInput={handleISBNInput}
+            onBlur={handleISBNBlur}
+            placeholder="978..."
+          />
+          {loading.value && <p class="hint">Looking up ISBN…</p>}
+        </div>
 
-      <label>Author</label>
-      <input
-        type="text"
-        value={author}
-        onInput={(e) => (author.value = e.currentTarget.value)}
-        placeholder="Author name"
-      />
+        <div class="field">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onInput={(e) => (title.value = e.currentTarget.value)}
+            placeholder="Book title"
+          />
+        </div>
 
-      <label>Pages</label>
-      <input
-        type="number"
-        value={pages}
-        onInput={(e) => (pages.value = e.currentTarget.value)}
-        placeholder="Pages"
-      />
+        <div class="field">
+          <label for="author">Author</label>
+          <input
+            type="text"
+            id="author"
+            value={author}
+            onInput={(e) => (author.value = e.currentTarget.value)}
+            placeholder="Author name"
+          />
+        </div>
 
-      <label>Genre</label>
-      <input
-        type="text"
-        value={genre}
-        onInput={(e) => (genre.value = e.currentTarget.value)}
-        placeholder="Fiction, non-fiction, etc."
-      />
+        <div class="field">
+          <label for="pages">Pages</label>
+          <input
+            type="number"
+            id="pages"
+            value={pages}
+            onInput={(e) => (pages.value = e.currentTarget.value)}
+            placeholder="Pages"
+          />
+        </div>
 
-      <label>Status</label>
-      <select
-        value={status}
-        onChange={(e) => (status.value = e.currentTarget.value)}
-      >
-        <option value="want">Want to Read</option>
-        <option value="reading">Reading</option>
-        <option value="read">Read</option>
-      </select>
+        <div class="field">
+          <label for="genre">Genre</label>
+          <input
+            type="text"
+            id="genre"
+            value={genre}
+            onInput={(e) => (genre.value = e.currentTarget.value)}
+            placeholder="Fiction, non-fiction, etc."
+          />
+        </div>
 
-      <label>Rating (1-5)</label>
-      <input
-        type="number"
-        min="1"
-        max="5"
-        value={rating}
-        onInput={(e) => (rating.value = e.currentTarget.value)}
-        placeholder=""
-      />
+        <div class="field">
+          <label for="status">Status</label>
+          <select
+            id="status"
+            value={status}
+            onChange={(e) => (status.value = e.currentTarget.value)}
+          >
+            <option value="want">Want to Read</option>
+            <option value="reading">Reading</option>
+            <option value="read">Read</option>
+          </select>
+        </div>
 
-      <button class="btn" type="submit">
-        Save to Sheet
-      </button>
-      <button
-        class="btn"
-        onClick={() => {
-          showForm.value = !showForm.value
-        }}
-      >
-        Cancel
-      </button>
+        <div class="field">
+          <label for="rating">Rating (1-5)</label>
+          <input
+            type="number"
+            id="rating"
+            min="1"
+            max="5"
+            value={rating}
+            onInput={(e) => (rating.value = e.currentTarget.value)}
+            placeholder=""
+          />
+        </div>
+
+        <button class="btn" type="submit">
+          Save book
+        </button>
+        <button
+          class="btn"
+          onClick={() => {
+            showForm.value = !showForm.value
+          }}
+        >
+          Cancel
+        </button>
+      </div>
 
       {saved.value && <p class="saved-msg">Saved!</p>}
     </form>
