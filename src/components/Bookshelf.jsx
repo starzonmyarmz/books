@@ -1,6 +1,6 @@
-import { useSignal } from "@preact/signals"
+import { useSignal, useSignalEffect } from "@preact/signals"
 import { useRef } from "preact/hooks"
-import { appendRow } from "../sheets.js"
+import { appendRow, getRows } from "../sheets.js"
 import { lookupISBN } from "../books.js"
 
 export function Bookshelf() {
@@ -14,7 +14,29 @@ export function Bookshelf() {
   const saved = useSignal(false)
   const loading = useSignal(false)
   const cover = useSignal("")
+  const rows = useSignal(null)
   const lookupTimer = useRef(null)
+
+  useSignalEffect(() => {
+    getRows("books")
+      .then((data) => {
+        const values = data.values
+
+        if (!values || values.length < 2) {
+          rows.value = []
+          return
+        }
+
+        const headers = values[0]
+
+        rows.value = values
+          .slice(1)
+          .map((row) =>
+            Object.fromEntries(headers.map((h, i) => [h, row[i] ?? ""])),
+          )
+      })
+      .catch(() => {})
+  })
 
   function handleISBNInput(e) {
     isbn.value = e.currentTarget.value
@@ -98,6 +120,39 @@ export function Bookshelf() {
         <h1>My Books</h1>
       </header>
 
+      <section>
+        {rows.value ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Genre</th>
+                <th>Status</th>
+                <th>Added</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.value.map(
+                ({ isbn, title, author, pages, genre, status, date_added }) => (
+                  <tr key={isbn}>
+                    <td>{title}</td>
+                    <td>{author}</td>
+                    <td>{pages}</td>
+                    <td>{genre}</td>
+                    <td>{status}</td>
+                    <td>{date_added}</td>
+                  </tr>
+                ),
+              )}
+            </tbody>
+          </table>
+        ) : (
+          <p>Loading books…</p>
+        )}
+      </section>
+
       <form onSubmit={handleSubmit} class="book-form">
         <h2>Add a Book</h2>
 
@@ -110,9 +165,7 @@ export function Bookshelf() {
           placeholder="978..."
         />
         {loading.value && <p class="hint">Looking up ISBN…</p>}
-        {cover.value && (
-          <img src={cover.value} alt="" class="cover-preview" />
-        )}
+        {cover.value && <img src={cover.value} alt="" class="cover-preview" />}
 
         <label>Title</label>
         <input
