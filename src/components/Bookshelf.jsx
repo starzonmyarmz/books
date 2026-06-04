@@ -122,26 +122,25 @@ export function Bookshelf() {
 
       <section>
         {rows.value ? (
-          <table>
+          <table class="table">
             <thead>
               <tr>
+                <th></th>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Pages</th>
                 <th>Genre</th>
-                <th>Status</th>
                 <th>Added</th>
               </tr>
             </thead>
             <tbody>
               {rows.value.map(
-                ({ isbn, title, author, pages, genre, status, date_added }) => (
+                ({ isbn, title, author, genre, status, date_added }) => (
                   <tr key={isbn}>
-                    <td>{title}</td>
+                    <td>
+                    </td>
+                    <th>{title}</th>
                     <td>{author}</td>
-                    <td>{pages}</td>
                     <td>{genre}</td>
-                    <td>{status}</td>
                     <td>{date_added}</td>
                   </tr>
                 ),
