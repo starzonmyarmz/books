@@ -14,7 +14,7 @@ export function BookDetail({ book, onClose }) {
 
       {book.cover_url && (
         <img
-          src={book.cover_url}
+          src={`${book.cover_url}&zoom=3`}
           alt={`Cover of ${book.title}`}
           class="cover-large"
         />
