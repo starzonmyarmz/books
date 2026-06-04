@@ -2,11 +2,13 @@ import { useSignal, useSignalEffect } from "@preact/signals"
 import { getRows } from "../sheets.js"
 
 import { Form } from "./Form.jsx"
+import { BookDetail } from "./BookDetail.jsx"
 import { Status } from "./Status.jsx"
 
 export function Bookshelf() {
   const rows = useSignal(null)
   const showForm = useSignal(false)
+  const selectedBook = useSignal(null)
 
   useSignalEffect(() => {
     getRows("books")
@@ -46,11 +48,22 @@ export function Bookshelf() {
         )}
       </header>
 
-      {showForm.value ? (
+      {showForm.value && (
         <section>
           <Form showForm={showForm} />
         </section>
-      ) : (
+      )}
+
+      {selectedBook.value && (
+        <BookDetail
+          book={selectedBook.value}
+          onClose={() => {
+            selectedBook.value = null
+          }}
+        />
+      )}
+
+      {!selectedBook.value && !showForm.value && (
         <section>
           {rows.value ? (
             <table class="table">
@@ -64,19 +77,22 @@ export function Bookshelf() {
                 </tr>
               </thead>
               <tbody>
-                {rows.value.map(
-                  ({ title, author, genre, status, date_added }, i) => (
-                    <tr key={i}>
-                      <td>
-                        <Status status={status} />
-                      </td>
-                      <th>{title}</th>
-                      <td>{author}</td>
-                      <td>{genre}</td>
-                      <td>{date_added}</td>
-                    </tr>
-                  ),
-                )}
+                {rows.value.map((row, i) => (
+                  <tr
+                    key={i}
+                    onClick={() => {
+                      selectedBook.value = row
+                    }}
+                  >
+                    <td>
+                      <Status status={row.status} />
+                    </td>
+                    <th>{row.title}</th>
+                    <td>{row.author}</td>
+                    <td>{row.genre}</td>
+                    <td>{row.date_added}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           ) : (
