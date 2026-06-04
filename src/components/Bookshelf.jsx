@@ -3,6 +3,8 @@ import { useRef } from "preact/hooks"
 import { appendRow, getRows } from "../sheets.js"
 import { lookupISBN } from "../books.js"
 
+import { Status } from "./Status.jsx"
+
 export function Bookshelf() {
   const isbn = useSignal("")
   const title = useSignal("")
@@ -137,6 +139,7 @@ export function Bookshelf() {
                 ({ isbn, title, author, genre, status, date_added }) => (
                   <tr key={isbn}>
                     <td>
+                      <Status status={status} />
                     </td>
                     <th>{title}</th>
                     <td>{author}</td>
