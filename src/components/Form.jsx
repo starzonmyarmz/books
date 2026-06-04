@@ -16,27 +16,6 @@ export function Form({ showForm }) {
   const cover = useSignal("")
   const lookupTimer = useRef(null)
 
-  useSignalEffect(() => {
-    getRows("books")
-      .then((data) => {
-        const values = data.values
-
-        if (!values || values.length < 2) {
-          rows.value = []
-          return
-        }
-
-        const headers = values[0]
-
-        rows.value = values
-          .slice(1)
-          .map((row) =>
-            Object.fromEntries(headers.map((h, i) => [h, row[i] ?? ""])),
-          )
-      })
-      .catch(() => {})
-  })
-
   function handleISBNInput(e) {
     isbn.value = e.currentTarget.value
 
