@@ -68,7 +68,7 @@ export function Form({ showForm }) {
         isbn.value,
         title.value,
         author.value,
-        "",
+        cover.value,
         pages.value,
         genre.value,
         status.value,
