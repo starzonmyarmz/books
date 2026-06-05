@@ -3,11 +3,12 @@ import { getRows } from "../sheets.js"
 
 import { Form } from "./Form.jsx"
 import { BookDetail } from "./BookDetail.jsx"
-import { Status } from "./Status.jsx"
 
 export function Bookshelf() {
   const rows = useSignal(null)
   const showForm = useSignal(false)
+  const filterStatus = useSignal("read")
+  const filterGenre = useSignal("")
   const selectedBook = useSignal(null)
 
   useSignalEffect(() => {
@@ -37,14 +38,40 @@ export function Bookshelf() {
         <h1>My Books</h1>
 
         {!showForm.value && (
-          <button
-            class="btn"
-            onClick={() => {
-              showForm.value = !showForm.value
-            }}
-          >
-            Add book
-          </button>
+          <>
+            <div id="filters">
+              <select
+                value={filterStatus.value}
+                onChange={(e) => (filterStatus.value = e.target.value)}
+              >
+                <button>
+                  <selectedcontent></selectedcontent>
+                </button>
+
+                <option value="read">Read</option>
+                <option value="want">Want to Read</option>
+              </select>
+
+              <select
+                value={filterGenre.value}
+                onChange={(e) => (filterGenre.value = e.target.value)}
+              >
+                <option value="">Any genre</option>
+                <option value="one">one</option>
+                <option value="two">two</option>
+                <option value="three">three</option>
+              </select>
+            </div>
+
+            <button
+              class="btn"
+              onClick={() => {
+                showForm.value = !showForm.value
+              }}
+            >
+              Add book
+            </button>
+          </>
         )}
       </header>
 
@@ -64,37 +91,38 @@ export function Bookshelf() {
       )}
 
       {!selectedBook.value && !showForm.value && (
-        <section>
+        <section id="bookshelf">
           {rows.value ? (
-            <table class="table">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Genre</th>
-                  <th>Added</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rows.value.map((row, i) => (
-                  <tr
+            <>
+              {rows.value.map((book, i) => {
+                const hidden =
+                  (filterStatus.value && book.status !== filterStatus.value) ||
+                  (filterGenre.value && book.genre !== filterGenre.value)
+                return (
+                  <button
                     key={i}
+                    class="book"
+                    hidden={hidden}
                     onClick={() => {
-                      selectedBook.value = row
+                      selectedBook.value = book
                     }}
                   >
-                    <td>
-                      <Status status={row.status} />
-                    </td>
-                    <th>{row.title}</th>
-                    <td>{row.author}</td>
-                    <td>{row.genre}</td>
-                    <td>{row.date_added}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    {book.cover_url ? (
+                      <img
+                        src={`${book.cover_url}&zoom=1`}
+                        alt={`Cover of ${book.title}`}
+                        class="book-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div class="book-cover">placeholder</div>
+                    )}
+                    <div class="book-title">{book.title}</div>
+                    <div class="book-author">{book.author}</div>
+                  </button>
+                )
+              })}
+            </>
           ) : (
             <p>Loading books…</p>
           )}

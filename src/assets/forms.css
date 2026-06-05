@@ -18,3 +18,53 @@ label {
 :where(input) {
   width: 100%;
 }
+
+select {
+  appearance: base-select;
+
+  &::picker-icon {
+    aspect-ratio: 1;
+    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>');
+    height: 16px;
+    width: 16px;
+    transition: rotate 0.2s;
+  }
+
+  &:open::picker-icon {
+    rotate: 180deg;
+  }
+
+  &::picker(select) {
+    appearance: base-select;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
+    margin-top: 4px;
+    padding: 0.5rem;
+    transition: all 0.2s;
+
+    @starting-style {
+      opacity: 0;
+      translate: 0 -1rem;
+    }
+  }
+}
+
+option {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+
+  &::checkmark {
+    order: 1;
+    margin-left: auto;
+    /*content: "☑️";*/
+  }
+
+  &:checked {
+    background: lightblue;
+  }
+
+  + option {
+    margin-top: 2px;
+  }
+}

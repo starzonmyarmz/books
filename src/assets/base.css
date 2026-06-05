@@ -27,3 +27,7 @@ header {
   justify-content: space-between;
   margin-bottom: 2rem;
 }
+
+[hidden][hidden] {
+  display: none;
+}
