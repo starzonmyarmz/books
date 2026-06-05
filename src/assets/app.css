@@ -9,63 +9,6 @@
   gap: 8px;
 }
 
-#bookshelf {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
-
-  .book {
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    font: inherit;
-    text-align: left;
-    outline: 0;
-
-    .book-cover {
-      transition: all 0.2s;
-    }
-
-    &:hover .book-cover,
-    &:focus-visible .book-cover {
-      translate: 0 -4px;
-      scale: 1.02;
-      box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
-    }
-
-    &:focus-visible .book-cover {
-      outline: 2px solid #1557b0;
-      outline-offset: 2px;
-    }
-  }
-
-  .book-cover {
-    aspect-ratio: 2 / 3;
-    border-radius: 0.75rem;
-    display: block;
-    min-width: 100%;
-  }
-
-  .book-title,
-  .book-author {
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-  }
-
-  .book-title {
-    font-weight: 600;
-    margin-top: 8px;
-  }
-
-  .book-author {
-    font-size: 0.8rem;
-  }
-}
-
 #book-form {
   background: #eee;
   display: grid;

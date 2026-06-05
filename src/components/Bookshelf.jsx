@@ -33,9 +33,9 @@ export function Bookshelf() {
   })
 
   return (
-    <main id="book-list">
+    <main>
       <header>
-        <h1>My Books</h1>
+        <h1>My Bookshelf</h1>
 
         {!showForm.value && (
           <>
@@ -90,8 +90,8 @@ export function Bookshelf() {
         />
       )}
 
-      {!selectedBook.value && !showForm.value && (
-        <section id="bookshelf">
+      {!showForm.value && (
+        <section class="bookshelf">
           {rows.value ? (
             <>
               {rows.value.map((book, i) => {
@@ -101,7 +101,7 @@ export function Bookshelf() {
                 return (
                   <button
                     key={i}
-                    class="book"
+                    class="bookshelf-book"
                     hidden={hidden}
                     onClick={() => {
                       selectedBook.value = book
@@ -111,14 +111,14 @@ export function Bookshelf() {
                       <img
                         src={`${book.cover_url}&zoom=1`}
                         alt={`Cover of ${book.title}`}
-                        class="book-cover"
+                        class="bookshelf-cover"
                         loading="lazy"
                       />
                     ) : (
-                      <div class="book-cover">placeholder</div>
+                      <div class="bookshelf-cover">placeholder</div>
                     )}
-                    <div class="book-title">{book.title}</div>
-                    <div class="book-author">{book.author}</div>
+                    <div class="bookshelf-title">{book.title}</div>
+                    <div class="bookshelf-author">{book.author}</div>
                   </button>
                 )
               })}
