@@ -1,8 +1,14 @@
-import { Barcode, BookOpen, Star, BookCheck, X } from "lucide-preact"
-import { Status } from "./Status.jsx"
+import { Star, X } from "lucide-preact"
+import { BookDetailMeta } from "./BookDetailMeta.jsx"
 
 export function BookDetail({ book, onClose }) {
   if (!book) return null
+
+  const rating = Number(book.rating)
+    ? [...Array(Number(book.rating))].map((_, i) => (
+        <Star key={i} size={16} fill="#111" strokeWidth={0} />
+      ))
+    : null
 
   return (
     <dialog open class="bookdetail" style={`--bg-url: url(${book.cover_url})`}>
@@ -26,68 +32,21 @@ export function BookDetail({ book, onClose }) {
           <h2 class="bookdetail-title">{book.title}</h2>
           <h3 class="bookdetail-author">{book.author}</h3>
 
-          <dl class="bookdetail-meta">
-            {book.isbn && (
-              <>
-                <dt>
-                  <Barcode size={24} />
-                </dt>
-                <dd>{book.isbn}</dd>
-              </>
-            )}
-            {book.pages && (
-              <>
-                <dt>
-                  <BookOpen size={24} />
-                </dt>
-                <dd>{book.pages}</dd>
-              </>
-            )}
-            {book.genre && (
-              <>
-                <dt>Genre</dt>
-                <dd>{book.genre}</dd>
-              </>
-            )}
-            {book.status && (
-              <>
-                <dt>
-                  <BookCheck size={24} />
-                </dt>
-                <dd>
-                  <Status status={book.status} />
-                </dd>
-              </>
-            )}
-            {book.date_added && (
-              <>
-                <dt>Date Added</dt>
-                <dd>{book.date_added}</dd>
-              </>
-            )}
-            {book.date_finished && (
-              <>
-                <dt>Date Finished</dt>
-                <dd>{book.date_finished}</dd>
-              </>
-            )}
-            {book.rating && (
-              <>
-                <dt>Rating</dt>
-                <dd>
-                  {[...Array(Number(book.rating))].map((_, i) => (
-                    <Star key={i} size={16} />
-                  ))}
-                </dd>
-              </>
-            )}
+          <ul class="bookdetail-genre">{book.genre}</ul>
+
+          <div class="bookdetail-meta">
+            <BookDetailMeta title="Status" data={book.status} />
+            <BookDetailMeta title="Added" data={book.date_added} />
+            <BookDetailMeta title="Finished" data={book.date_finished} />
+            <BookDetailMeta title="Rating" data={rating} />
+
             {book.notes && (
-              <>
-                <dt>Notes</dt>
-                <dd>{book.notes}</dd>
-              </>
+              <div>
+                <h4 class="bookdetail-meta-title">Notes</h4>
+                <p class="bookdetail-meta-content">{book.notes}</p>
+              </div>
             )}
-          </dl>
+          </div>
         </div>
       </div>
     </dialog>
