@@ -1,18 +1,18 @@
 .fields {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 label {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: var(--space-xs);
 }
 
 :where(input, select) {
-  background: #fff;
-  border: 1px solid #bbb;
-  padding: 8px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  padding: var(--space-sm);
 }
 
 :where(input) {
@@ -27,7 +27,7 @@ select {
     content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>');
     height: 16px;
     width: 16px;
-    transition: rotate 0.2s;
+    transition: rotate var(--transition-fast);
   }
 
   &:open::picker-icon {
@@ -36,12 +36,12 @@ select {
 
   &::picker(select) {
     appearance: base-select;
-    border: 1px solid #ddd;
-    border-radius: 1rem;
-    box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
-    margin-top: 4px;
-    padding: 0.5rem;
-    transition: all 0.2s;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    margin-top: var(--space-xs);
+    padding: var(--space-sm);
+    transition: all var(--transition-fast);
 
     @starting-style {
       opacity: 0;
@@ -51,8 +51,8 @@ select {
 }
 
 option {
-  border-radius: 0.5rem;
-  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
 
   &::checkmark {
     order: 1;

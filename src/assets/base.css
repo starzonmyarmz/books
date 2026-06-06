@@ -1,3 +1,36 @@
+:root {
+  --color-primary: #1a73e8;
+  --color-primary-hover: #1557b0;
+  --color-surface: #eee;
+  --color-border: #bbb;
+  --color-border-light: #ddd;
+  --color-white: #fff;
+  --color-text: #000;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+
+  --font-sm: 0.8rem;
+  --font-md: 1rem;
+  --font-lg: 1.5rem;
+  --font-xl: 3rem;
+
+  --shadow-sm: 0 3px 5px rgb(0 0 0 / 0.2);
+  --shadow-lg: 0 8px 24px -4px rgb(0 0 0 / 0.4);
+
+  --transition-fast: 0.2s;
+  --transition-slow: 1s 0.3s;
+
+  --content-inline-padding: 15vw;
+}
+
 *,
 *::before,
 *::after {
@@ -22,14 +55,14 @@ body {
 
 header,
 section {
-  padding: 1rem;
+  padding: var(--space-md);
 }
 
 header {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--space-md);
 
   @media (width >= 728px) {
     align-items: center;

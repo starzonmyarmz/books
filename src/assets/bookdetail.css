@@ -7,7 +7,7 @@
   display: block;
   width: 100vw;
   position: relative;
-  transition: all 1s 0.3s;
+  transition: all var(--transition-slow);
 
   @starting-style {
     opacity: 0;
@@ -18,9 +18,9 @@
   align-items: center;
   backdrop-filter: blur(50px);
   display: flex;
-  gap: 2rem;
-  padding-block: 3rem;
-  padding-inline: 15vw;
+  gap: var(--space-lg);
+  padding-block: var(--space-xl);
+  padding-inline: var(--content-inline-padding);
   position: relative;
 }
 
@@ -36,7 +36,7 @@
   position: absolute;
   right: 0;
   top: 0;
-  transition: opacity 0.2s;
+  transition: opacity var(--transition-fast);
   width: 48px;
 
   &:hover {
@@ -46,47 +46,46 @@
 
 .bookdetail-cover {
   aspect-ratio: 2 / 3;
-  border-radius: 1rem;
-  box-shadow: 0 8px 24px -4px rgb(0 0 0 / 0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   flex: 1;
 }
 
 .bookdetail-info {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-md);
   flex: 2;
 }
 
 .bookdetail-title {
-  font-size: 3rem;
+  font-size: var(--font-xl);
   line-height: 1.1;
   text-wrap: balance;
 }
 
 .bookdetail-author {
-  font-size: 1.5rem;
+  font-size: var(--font-lg);
   text-wrap: balance;
 }
 
 .bookdetail-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--space-md);
 
   div {
-    border: 2px solid #000;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
+    border: 2px solid var(--color-text);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm);
   }
 }
 
 .bookdetail-meta-title {
-  font-size: 0.8rem;
+  font-size: var(--font-sm);
 }
 
 .bookdetail-meta-content {
-  font-size: 0.9rem;
   margin-block: 0.15rem 0;
   text-transform: capitalize;
 }

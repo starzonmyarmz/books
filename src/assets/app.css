@@ -6,21 +6,21 @@
 
 #filters {
   display: flex;
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 #book-form {
-  background: #eee;
+  background: var(--color-surface);
   display: grid;
   grid-template-columns: 2fr 2fr;
-  padding: 1rem;
+  padding: var(--space-md);
 }
 
 .missing-book {
   aspect-ratio: 2 / 3;
-  background: #eee;
-  border-radius: 1rem;
-  box-shadow: 0 8px 24px -4px rgb(0 0 0 / 0.4);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   display: grid;
   flex: 1;
   place-content: center;

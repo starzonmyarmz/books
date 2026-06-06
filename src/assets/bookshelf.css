@@ -1,7 +1,7 @@
 .bookshelf {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: var(--space-md);
 
   @media (width >= 600px) {
     grid-template-columns: repeat(4, 1fr);
@@ -30,21 +30,21 @@
   &:focus-visible .bookshelf-cover {
     translate: 0 -4px;
     scale: 1.02;
-    box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
+    box-shadow: var(--shadow-sm);
   }
 
   &:focus-visible .bookshelf-cover {
-    outline: 2px solid #1557b0;
+    outline: 2px solid var(--color-primary-hover);
     outline-offset: 2px;
   }
 }
 
 .bookshelf-cover {
   aspect-ratio: 2 / 3;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-md);
   display: block;
   min-width: 100%;
-  transition: all 0.2s;
+  transition: all var(--transition-fast);
 }
 
 .bookshelf-title,
@@ -57,9 +57,9 @@
 
 .bookshelf-title {
   font-weight: 600;
-  margin-top: 8px;
+  margin-top: var(--space-sm);
 }
 
 .bookshelf-author {
-  font-size: 0.8rem;
+  font-size: var(--font-sm);
 }

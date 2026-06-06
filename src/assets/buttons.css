@@ -1,22 +1,22 @@
 .btn {
-  background: #1a73e8;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-white);
   border: none;
   font: inherit;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 1rem;
+  font-size: var(--font-md);
 
   &:hover {
-    background: #1557b0;
+    background: var(--color-primary-hover);
   }
 }
 
 .btn-google {
-  background: #1a73e8;
+  background: var(--color-primary);
 
   &:hover {
-    background: #1557b0;
+    background: var(--color-primary-hover);
   }
 }
