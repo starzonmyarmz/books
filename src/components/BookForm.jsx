@@ -1,4 +1,4 @@
-import { useSignal, useSignalEffect } from "@preact/signals"
+import { useSignal } from "@preact/signals"
 import { useRef } from "preact/hooks"
 
 import { MissingBook } from "./MissingBook.jsx"
