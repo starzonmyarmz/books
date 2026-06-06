@@ -1,7 +1,19 @@
 .bookshelf {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+
+  @media (width >= 600px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (width >= 900px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @media (width >= 1200px) {
+    grid-template-columns: repeat(8, 1fr);
+  }
 }
 
 .bookshelf-book {

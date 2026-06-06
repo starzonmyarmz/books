@@ -2,6 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  corner-shape: squircle;
   interpolate-size: allow-keywords;
   margin: 0;
   padding: 0;
@@ -17,20 +18,24 @@ html {
 
 body {
   min-height: 100dvh;
+}
+
+header,
+section {
   padding: 1rem;
 }
 
-main {
+header {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-}
-
-header {
-  align-items: center;
-  display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 1rem;
+
+  @media (width >= 728px) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 [hidden][hidden] {
