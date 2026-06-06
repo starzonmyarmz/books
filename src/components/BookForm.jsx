@@ -1,5 +1,8 @@
 import { useSignal, useSignalEffect } from "@preact/signals"
 import { useRef } from "preact/hooks"
+
+import { MissingBook } from "./MissingBook.jsx"
+
 import { appendRow, getRows } from "../sheets.js"
 import { lookupISBN } from "../books.js"
 
@@ -105,9 +108,7 @@ export function BookForm({ showForm }) {
             loading="lazy"
           />
         ) : (
-          <div class="bookdetail-cover" aria-hidden="true">
-            placeholder
-          </div>
+          <MissingBook />
         )}
 
         <div class="bookdetail-info">

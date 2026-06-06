@@ -1,5 +1,6 @@
 import { Star, X } from "lucide-preact"
 import { BookDetailMeta } from "./BookDetailMeta.jsx"
+import { MissingBook } from "./MissingBook.jsx"
 
 export function BookDetail({ book, onClose }) {
   if (!book) return null
@@ -25,7 +26,7 @@ export function BookDetail({ book, onClose }) {
             loading="lazy"
           />
         ) : (
-          <div class="bookdetail-cover">placeholder</div>
+          <MissingBook />
         )}
 
         <div class="bookdetail-info">
