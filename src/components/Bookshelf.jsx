@@ -38,18 +38,18 @@ export function Bookshelf() {
       <header>
         <h1>My Bookshelf</h1>
 
-        <button
-          class="btn"
-          id="add-book-button"
-          onClick={() => {
-            showForm.value = !showForm.value
-          }}
-        >
-          Add book
-        </button>
-
         {!showForm.value && (
           <>
+            <button
+              class="btn"
+              id="add-book-button"
+              onClick={() => {
+                showForm.value = !showForm.value
+              }}
+            >
+              Add book
+            </button>
+
             <div id="filters">
               <select
                 value={filterStatus.value}
