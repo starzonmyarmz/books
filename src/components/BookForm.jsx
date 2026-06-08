@@ -6,7 +6,7 @@ import { MissingBook } from "./MissingBook.jsx"
 import { appendRow, getRows } from "../sheets.js"
 import { lookupISBN } from "../books.js"
 
-export function BookForm({ showForm }) {
+export function BookForm({ onClose }) {
   const isbn = useSignal("")
   const title = useSignal("")
   const author = useSignal("")
@@ -91,7 +91,7 @@ export function BookForm({ showForm }) {
       rating.value = ""
       cover.value = ""
 
-      showForm.value = !showForm.value
+      onClose()
     } catch (err) {
       alert("Failed to save: " + err.message)
     }
@@ -190,12 +190,7 @@ export function BookForm({ showForm }) {
             <button class="btn" type="submit">
               Save book
             </button>
-            <button
-              class="btn"
-              onClick={() => {
-                showForm.value = !showForm.value
-              }}
-            >
+            <button class="btn" onClick={onClose}>
               Cancel
             </button>
           </div>

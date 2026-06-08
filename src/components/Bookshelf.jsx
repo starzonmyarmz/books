@@ -7,7 +7,7 @@ import { MissingBook } from "./MissingBook.jsx"
 
 export function Bookshelf() {
   const rows = useSignal(null)
-  const showForm = useSignal(false)
+  const page = useSignal("shelf")
   const filterStatus = useSignal("read")
   const filterGenre = useSignal("")
   const selectedBook = useSignal(null)
@@ -34,17 +34,17 @@ export function Bookshelf() {
   })
 
   return (
-    <main>
+    <main id={page}>
       <header>
         <h1>My Bookshelf</h1>
 
-        {!showForm.value && (
+        {page.value !== "form" && (
           <>
             <button
               class="btn"
               id="add-book-button"
               onClick={() => {
-                showForm.value = !showForm.value
+                page.value = "form"
               }}
             >
               Add book
@@ -77,18 +77,25 @@ export function Bookshelf() {
         )}
       </header>
 
-      {showForm.value && <BookForm showForm={showForm} />}
+      {page.value === "form" && (
+        <BookForm
+          onClose={() => {
+            page.value = "shelf"
+          }}
+        />
+      )}
 
-      {selectedBook.value && (
+      {page.value === "detail" && selectedBook.value && (
         <BookDetail
           book={selectedBook.value}
           onClose={() => {
+            page.value = "shelf"
             selectedBook.value = null
           }}
         />
       )}
 
-      {!selectedBook.value && (
+      {page.value === "shelf" && (
         <section class="bookshelf">
           {rows.value ? (
             <>
@@ -102,6 +109,7 @@ export function Bookshelf() {
                     class="bookshelf-book"
                     hidden={hidden}
                     onClick={() => {
+                      page.value = "detail"
                       selectedBook.value = book
                     }}
                   >
