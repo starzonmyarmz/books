@@ -7,13 +7,19 @@
 #filters {
   display: flex;
   gap: var(--space-sm);
+
+  @media (width >= 728px) {
+    justify-self: center;
+    order: 2;
+  }
 }
 
-#book-form {
-  background: var(--color-surface);
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  padding: var(--space-md);
+#add-book-button {
+  justify-self: end;
+
+  @media (width >= 728px) {
+    order: 3;
+  }
 }
 
 .missing-book {

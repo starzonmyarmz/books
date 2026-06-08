@@ -37,6 +37,16 @@ export function Bookshelf() {
       <header>
         <h1>My Bookshelf</h1>
 
+        <button
+          class="btn"
+          id="add-book-button"
+          onClick={() => {
+            showForm.value = !showForm.value
+          }}
+        >
+          Add book
+        </button>
+
         {!showForm.value && (
           <>
             <div id="filters">
@@ -62,15 +72,6 @@ export function Bookshelf() {
                 <option value="three">three</option>
               </select>
             </div>
-
-            <button
-              class="btn"
-              onClick={() => {
-                showForm.value = !showForm.value
-              }}
-            >
-              Add book
-            </button>
           </>
         )}
       </header>
