@@ -1,6 +1,7 @@
 import { Star, X } from "lucide-preact"
 import { BookDetailMeta } from "./BookDetailMeta.jsx"
 import { MissingBook } from "./MissingBook.jsx"
+import { coverURL } from "../books.js"
 
 export function BookDetail({ book, onClose }) {
   if (!book) return null
@@ -15,16 +16,16 @@ export function BookDetail({ book, onClose }) {
     <dialog
       open
       class="bookdetail"
-      style={`--bg-url: url(${book.cover_url}&zoom=1)`}
+      style={`--bg-url: url(${coverURL(book.google_id)})`}
     >
       <div class="bookdetail-content">
         <button class="bookdetail-close" onClick={onClose}>
           <X size={24} />
         </button>
 
-        {book.cover_url ? (
+        {book.google_id ? (
           <img
-            src={`${book.cover_url}&zoom=2`}
+            src={coverURL(book.google_id, 2)}
             alt={`Cover of ${book.title}`}
             class="bookdetail-cover"
             loading="lazy"

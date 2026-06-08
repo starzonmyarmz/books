@@ -22,7 +22,7 @@ Then fill in your values:
 | `SPREADSHEET_ID` | Create a Google Sheet, copy the ID from the URL (`https://docs.google.com/spreadsheets/d/{ID}/edit`). Must have a tab named `books`. |
 | `BOOKS_API_KEY` | Google Cloud Console → APIs & Services → Credentials → API Key. Enable the Books API for the project. |
 
-The Sheet's `books` tab expects columns: isbn, title, author, cover_url, pages, genre, status, date_added, date_finished, rating, notes.
+The Sheet's `books` tab expects columns: isbn, title, author, google_id, pages, genre, status, date_added, date_finished, rating, notes.
 
 Status values: `want` | `reading` | `read`
 

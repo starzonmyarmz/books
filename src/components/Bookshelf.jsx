@@ -4,6 +4,7 @@ import { getRows } from "../sheets.js"
 import { BookForm } from "./BookForm.jsx"
 import { BookDetail } from "./BookDetail.jsx"
 import { MissingBook } from "./MissingBook.jsx"
+import { coverURL } from "../books.js"
 
 export function Bookshelf() {
   const rows = useSignal(null)
@@ -115,9 +116,9 @@ export function Bookshelf() {
                       selectedBook.value = book
                     }}
                   >
-                    {book.cover_url ? (
+                    {book.google_id ? (
                       <img
-                        src={`${book.cover_url}&zoom=1`}
+                        src={coverURL(book.google_id)}
                         alt={`Cover of ${book.title}`}
                         class="bookshelf-cover"
                         loading="lazy"

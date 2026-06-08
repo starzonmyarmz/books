@@ -33,7 +33,7 @@
 - `useRef()` for debounce timers
 
 ### Google Sheet schema (`books` tab)
-isbn, title, author, cover_url, pages, genre, status, date_added, date_finished, rating, notes
+isbn, title, author, google_id, pages, genre, status, date_added, date_finished, rating, notes
 
 ### APIs (no auth needed for reads)
 - Google Books: `GET https://www.googleapis.com/books/v1/volumes?q=isbn:{ISBN}&key={API_KEY}`

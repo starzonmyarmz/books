@@ -4,7 +4,7 @@ import { useRef } from "preact/hooks"
 import { MissingBook } from "./MissingBook.jsx"
 
 import { appendRow, getRows } from "../sheets.js"
-import { lookupISBN } from "../books.js"
+import { coverURL, lookupISBN } from "../books.js"
 
 export function BookForm({ onClose }) {
   const isbn = useSignal("")
@@ -16,7 +16,7 @@ export function BookForm({ onClose }) {
   const rating = useSignal("")
   const saved = useSignal(false)
   const loading = useSignal(false)
-  const cover = useSignal("")
+  const googleId = useSignal("")
   const lookupTimer = useRef(null)
 
   function handleISBNInput(e) {
@@ -51,7 +51,7 @@ export function BookForm({ onClose }) {
       author.value = book.authors
       pages.value = book.pages
       genre.value = book.genre
-      cover.value = book.cover
+      googleId.value = book.google_id
     } catch {
       // silently ignore lookup failures
     } finally {
@@ -71,7 +71,7 @@ export function BookForm({ onClose }) {
         isbn.value,
         title.value,
         author.value,
-        cover.value,
+        googleId.value,
         pages.value,
         genre.value,
         status.value,
@@ -89,7 +89,7 @@ export function BookForm({ onClose }) {
       genre.value = ""
       status.value = "want"
       rating.value = ""
-      cover.value = ""
+      googleId.value = ""
 
       onClose()
     } catch (err) {
@@ -100,9 +100,9 @@ export function BookForm({ onClose }) {
   return (
     <dialog open class="bookform">
       <form onSubmit={handleSubmit} class="bookform-content">
-        {cover.value ? (
+        {googleId.value ? (
           <img
-            src={`${cover.value}&zoom=2`}
+            src={coverURL(googleId.value, 2)}
             alt={`Cover of ${title}`}
             class="bookdetail-cover"
             loading="lazy"

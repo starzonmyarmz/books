@@ -2,6 +2,10 @@ import { BOOKS_API_KEY } from "./config.js"
 
 const API = "https://www.googleapis.com/books/v1/volumes"
 
+export function coverURL(googleId, zoom = 1) {
+  return `https://books.google.com/books/content?id=${googleId}&printsec=frontcover&img=1&zoom=${zoom}`
+}
+
 export async function lookupISBN(isbn) {
   const clean = isbn.replace(/[^0-9X]/gi, "")
   if (clean.length < 10) return null
@@ -25,6 +29,6 @@ export async function lookupISBN(isbn) {
     authors: info.authors ? info.authors.join(", ") : "",
     pages: info.pageCount ? String(info.pageCount) : "",
     genre: info.categories ? info.categories[0] : "",
-    cover: info.imageLinks?.thumbnail || "",
+    google_id: data.items[0].id || "",
   }
 }
