@@ -29,6 +29,8 @@ export function BookDetail({ book, onClose }) {
             alt={`Cover of ${book.title}`}
             class="bookdetail-cover"
             loading="lazy"
+            width="300"
+            height="450"
           />
         ) : (
           <MissingBook klass="bookdetail-cover" />

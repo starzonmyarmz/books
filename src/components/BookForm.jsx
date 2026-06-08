@@ -52,6 +52,8 @@ export function BookForm({ onClose }) {
       pages.value = book.pages
       genre.value = book.genre
       googleId.value = book.google_id
+      const img = new Image()
+      img.src = coverURL(book.google_id, 2)
     } catch {
       // silently ignore lookup failures
     } finally {

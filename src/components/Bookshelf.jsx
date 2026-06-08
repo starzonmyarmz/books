@@ -112,6 +112,8 @@ export function Bookshelf() {
                     class="bookshelf-book"
                     hidden={hidden}
                     onClick={() => {
+                      const img = new Image()
+                      img.src = coverURL(book.google_id, 2)
                       page.value = "detail"
                       selectedBook.value = book
                     }}

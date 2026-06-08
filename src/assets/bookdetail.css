@@ -49,6 +49,7 @@
 
 .bookdetail-cover {
   aspect-ratio: 2 / 3;
+  background: var(--color-surface);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   flex: 1;
