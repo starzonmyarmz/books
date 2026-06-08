@@ -26,7 +26,7 @@ export function BookDetail({ book, onClose }) {
             loading="lazy"
           />
         ) : (
-          <MissingBook />
+          <MissingBook klass="bookdetail-cover" />
         )}
 
         <div class="bookdetail-info">

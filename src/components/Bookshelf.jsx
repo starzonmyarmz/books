@@ -3,6 +3,7 @@ import { getRows } from "../sheets.js"
 
 import { BookForm } from "./BookForm.jsx"
 import { BookDetail } from "./BookDetail.jsx"
+import { MissingBook } from "./MissingBook.jsx"
 
 export function Bookshelf() {
   const rows = useSignal(null)
@@ -111,7 +112,7 @@ export function Bookshelf() {
                       loading="lazy"
                     />
                   ) : (
-                    <div class="bookshelf-cover">placeholder</div>
+                    <MissingBook klass="bookshelf-cover" />
                   )}
                   <div class="bookshelf-title">{book.title}</div>
                   <div class="bookshelf-author">{book.author}</div>
