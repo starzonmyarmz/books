@@ -1,5 +1,6 @@
 #sign-in {
   display: grid;
+  gap: var(--space-lg);
   place-content: center;
   min-height: 100vh;
 }
