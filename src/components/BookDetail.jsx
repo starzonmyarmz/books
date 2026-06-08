@@ -7,12 +7,16 @@ export function BookDetail({ book, onClose }) {
 
   const rating = Number(book.rating)
     ? [...Array(Number(book.rating))].map((_, i) => (
-        <Star key={i} size={16} fill="#111" strokeWidth={0} />
+        <Star key={i} size={32} fill="#111" strokeWidth={0} />
       ))
     : null
 
   return (
-    <dialog open class="bookdetail" style={`--bg-url: url(${book.cover_url})`}>
+    <dialog
+      open
+      class="bookdetail"
+      style={`--bg-url: url(${book.cover_url}&zoom=1)`}
+    >
       <div class="bookdetail-content">
         <button class="bookdetail-close" onClick={onClose}>
           <X size={24} />

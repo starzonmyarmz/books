@@ -5,9 +5,11 @@
   background-size: cover;
   border: 0;
   display: block;
-  width: 100vw;
+  height: auto;
+  min-height: stretch;
   position: relative;
   transition: all var(--transition-slow);
+  width: 100vw;
 
   @starting-style {
     opacity: 0;
@@ -16,9 +18,10 @@
 
 .bookdetail-content {
   align-items: center;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(72px);
   display: flex;
   gap: var(--space-lg);
+  min-height: stretch;
   padding-block: var(--space-xl);
   padding-inline: var(--content-inline-padding);
   position: relative;

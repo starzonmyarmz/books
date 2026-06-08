@@ -39,18 +39,20 @@ export function Bookshelf() {
         <h1>My Bookshelf</h1>
 
         {page.value !== "form" && (
-          <>
-            <button
-              class="btn"
-              id="add-book-button"
-              onClick={() => {
-                page.value = "form"
-              }}
-            >
-              Add book
-            </button>
+          <button
+            class="btn"
+            id="add-book-button"
+            onClick={() => {
+              page.value = "form"
+            }}
+          >
+            Add book
+          </button>
+        )}
 
-            <div id="filters">
+        <div id="filters">
+          {page.value === "shelf" && (
+            <>
               <select
                 value={filterStatus.value}
                 onChange={(e) => (filterStatus.value = e.target.value)}
@@ -72,9 +74,9 @@ export function Bookshelf() {
                 <option value="two">two</option>
                 <option value="three">three</option>
               </select>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </header>
 
       {page.value === "form" && (
