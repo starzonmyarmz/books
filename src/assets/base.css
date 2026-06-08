@@ -1,11 +1,10 @@
 :root {
-  --color-primary: #1a73e8;
-  --color-primary-hover: #1557b0;
+  --color-primary: #1e2229;
+  --color-primary-hover: #2a2d36;
   --color-surface: #eee;
-  --color-border: #bbb;
-  --color-border-light: #ddd;
+  --color-border: #323642;
   --color-white: #fff;
-  --color-text: #000;
+  --color-text: var(--color-primary);
 
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;

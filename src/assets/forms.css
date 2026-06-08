@@ -4,6 +4,11 @@
   gap: var(--space-sm);
 }
 
+.field-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
 label {
   display: block;
   margin-bottom: var(--space-xs);
@@ -12,6 +17,8 @@ label {
 :where(input, select) {
   background: var(--color-white);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font: inherit;
   padding: var(--space-sm);
 }
 
@@ -36,8 +43,8 @@ select {
 
   &::picker(select) {
     appearance: base-select;
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     margin-top: var(--space-xs);
     padding: var(--space-sm);
