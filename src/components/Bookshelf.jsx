@@ -88,42 +88,44 @@ export function Bookshelf() {
         />
       )}
 
-      <section class="bookshelf">
-        {rows.value ? (
-          <>
-            {rows.value.map((book, i) => {
-              const hidden =
-                (filterStatus.value && book.status !== filterStatus.value) ||
-                (filterGenre.value && book.genre !== filterGenre.value)
-              return (
-                <button
-                  key={i}
-                  class="bookshelf-book"
-                  hidden={hidden}
-                  onClick={() => {
-                    selectedBook.value = book
-                  }}
-                >
-                  {book.cover_url ? (
-                    <img
-                      src={`${book.cover_url}&zoom=1`}
-                      alt={`Cover of ${book.title}`}
-                      class="bookshelf-cover"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <MissingBook klass="bookshelf-cover" />
-                  )}
-                  <div class="bookshelf-title">{book.title}</div>
-                  <div class="bookshelf-author">{book.author}</div>
-                </button>
-              )
-            })}
-          </>
-        ) : (
-          <p>Loading books…</p>
-        )}
-      </section>
+      {!selectedBook.value && (
+        <section class="bookshelf">
+          {rows.value ? (
+            <>
+              {rows.value.map((book, i) => {
+                const hidden =
+                  (filterStatus.value && book.status !== filterStatus.value) ||
+                  (filterGenre.value && book.genre !== filterGenre.value)
+                return (
+                  <button
+                    key={i}
+                    class="bookshelf-book"
+                    hidden={hidden}
+                    onClick={() => {
+                      selectedBook.value = book
+                    }}
+                  >
+                    {book.cover_url ? (
+                      <img
+                        src={`${book.cover_url}&zoom=1`}
+                        alt={`Cover of ${book.title}`}
+                        class="bookshelf-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <MissingBook klass="bookshelf-cover" />
+                    )}
+                    <div class="bookshelf-title">{book.title}</div>
+                    <div class="bookshelf-author">{book.author}</div>
+                  </button>
+                )
+              })}
+            </>
+          ) : (
+            <p>Loading books…</p>
+          )}
+        </section>
+      )}
     </main>
   )
 }
