@@ -1,5 +1,6 @@
 import { useSignal, useSignalEffect } from "@preact/signals"
 import { getRows } from "../sheets.js"
+import { Plus } from "lucide-preact"
 
 import { BookForm } from "./BookForm.jsx"
 import { BookDetail } from "./BookDetail.jsx"
@@ -47,7 +48,7 @@ export function Bookshelf() {
               page.value = "form"
             }}
           >
-            Add book
+            <Plus />
           </button>
         )}
 
