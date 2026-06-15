@@ -20,11 +20,19 @@
   align-items: center;
   backdrop-filter: blur(72px);
   display: flex;
+  flex-direction: column;
   gap: var(--space-lg);
   min-height: stretch;
   padding-block: var(--space-xl);
   padding-inline: var(--content-inline-padding);
   position: relative;
+}
+
+@media (width >= 728px) {
+  .bookdetail-content {
+    align-items: center;
+    flex-direction: row;
+  }
 }
 
 .bookdetail-close {
@@ -53,6 +61,17 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   flex: 1;
+  max-height: 50dvh;
+  max-width: 60%;
+  object-fit: contain;
+}
+
+@media (width >= 728px) {
+  .bookdetail-cover {
+    max-height: none;
+    max-width: 100%;
+    object-fit: initial;
+  }
 }
 
 .bookdetail-info {
