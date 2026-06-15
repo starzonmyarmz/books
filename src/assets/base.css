@@ -41,6 +41,7 @@
 }
 
 html {
+  background: var(--color-white);
   font-family:
     system-ui,
     -apple-system,
@@ -58,13 +59,16 @@ section {
 }
 
 header {
+  align-items: center;
+  background: var(--color-white);
   display: grid;
   gap: var(--space-md);
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
+  position: sticky;
+  top: 0;
 
   @media (width >= 728px) {
     grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
   }
 }
 

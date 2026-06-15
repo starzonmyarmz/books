@@ -19,6 +19,10 @@
     justify-self: center;
     order: 2;
   }
+
+  &:empty {
+    display: none;
+  }
 }
 
 #add-book-button {
