@@ -28,9 +28,10 @@ export function Bookshelf() {
 
         rows.value = values
           .slice(1)
-          .map((row) =>
-            Object.fromEntries(headers.map((h, i) => [h, row[i] ?? ""])),
-          )
+          .map((row, i) => ({
+            ...Object.fromEntries(headers.map((h, j) => [h, row[j] ?? ""])),
+            _rowIndex: i + 2,
+          }))
       })
       .catch(() => {})
   })
@@ -95,6 +96,12 @@ export function Bookshelf() {
           onClose={() => {
             page.value = "shelf"
             selectedBook.value = null
+          }}
+          onSave={(updated) => {
+            selectedBook.value = updated
+            rows.value = rows.value.map((b) =>
+              b._rowIndex === updated._rowIndex ? updated : b,
+            )
           }}
         />
       )}
