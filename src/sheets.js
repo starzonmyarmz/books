@@ -39,3 +39,14 @@ export async function getRows(sheetName) {
   const resp = await fetch(url, { headers: headers() })
   return handleResponse(resp)
 }
+
+export async function updateRow(sheetName, rowIndex, values) {
+  const range = `'${sheetName}'!A${rowIndex}:K${rowIndex}`
+  const url = `${BASE}/${SPREADSHEET_ID}/values/${range}?valueInputOption=USER_ENTERED`
+  const resp = await fetch(url, {
+    method: "PUT",
+    headers: headers(),
+    body: JSON.stringify({ range, values: [values] }),
+  })
+  return handleResponse(resp)
+}
